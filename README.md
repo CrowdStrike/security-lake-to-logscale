@@ -40,7 +40,7 @@ Follow these steps to deploy the Lambda function:
 
 8. Deploy the Lambda function by uploading the ZIP file.
 
-#### Notes: 
+#### Notes:
 - Maximum zip size allowed by AWS Lambda funtion is 250mb.
 - Please note this code uses fastparquet instead of pyarrow because of the size limit.
 
@@ -49,9 +49,9 @@ Follow these steps to deploy the Lambda function:
 Configure the Lambda function using environment variables or configuration files as needed. Make sure to set the following variables:
 
 - `baseUrl`: Falcon LogScale account url
-- `logscaleToken`: Falcon LogScale API token for authentication. 
+- `logscaleToken`: Falcon LogScale API token for authentication.
 -  other relevant configuration variables for your specific use case.
- 
+
 ## Usage
 
 Once the Lambda function is deployed and configured, it will automatically trigger whenever a new .parquet file is uploaded to the specified S3 bucket. The function will convert the file to JSON and send the data to Falcon LogScale.
@@ -60,5 +60,5 @@ Once the Lambda function is deployed and configured, it will automatically trigg
 **Useful Reference Links:**
   - [AWS Lambda Function Info](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 
-<p align="center"><img src=docs/asset/cs-logo-footer.png"><BR/><img width="150px" src="docs/asset/adversary-red-eyes.png"></P>
+<p align="center"><img src="docs/asset/cs-logo-footer.png"><BR/><img width="150px" src="docs/asset/adversary-red-eyes.png"></P>
 <h3><P align="center">WE STOP BREACHES</P></h3>

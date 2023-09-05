@@ -58,7 +58,6 @@ Once the Lambda function is deployed and configured, it will automatically trigg
 
 
 **Useful Reference Links:**
-  - [LogScale K8s Reference Architecture](https://library.humio.com/falcon-logscale-self-hosted/installation-k8s-ref-arch.html)
   - [AWS Lambda Function Info](https://docs.aws.amazon.com/lambda/latest/dg/welcome.html)
 
 <p align="center"><img src=docs/asset/cs-logo-footer.png"><BR/><img width="150px" src="docs/asset/adversary-red-eyes.png"></P>

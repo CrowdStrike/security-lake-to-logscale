@@ -16,20 +16,15 @@ def lambda_handler(event, context):
         baseUrl = os.environ.get('baseUrl')
         buffer = io.BytesIO()
         s3 = boto3.resource("s3")
-        print(f"buffer is {buffer} and type is :",type(buffer))
+        
         # extract the bucket & key
         bucket = event['Records'][0]['s3']['bucket']['name']
         key = event['Records'][0]['s3']['object']['key']
         decodedKey = urllib.parse.unquote_plus(key)
         object = s3.Object(bucket,decodedKey)
-        print(f"File name is : {decodedKey}")
         object.download_fileobj(buffer)
-        print("after download")
         df = pd.read_parquet(buffer)
-        print(f"DF is : {df}")
         eventpayloads = json.loads(df.to_json(orient="records"))
-        print("after buffer")
-
         header = {'Authorization': f'Bearer {logscale_token}', 'Content-Type': 'application/json',
                   'Accept': 'application/json'}
         time = d = datetime.datetime.utcnow().replace(tzinfo=datetime.timezone.utc).isoformat()
@@ -41,8 +36,8 @@ def lambda_handler(event, context):
         payload = [{"tags": {"host": "logscaleEvents"},
                     "events": events
                     }]
-        print(f"after event:{payload}  ")
+        
         response = requests.post(baseUrl, headers=header, data=json.dumps(payload))
-        print(response.text)
+        print(f"The Response Code returned is {response.status_code}")
     except Exception as err:
         print(f"Exception in lambda function execution is: {err}")
